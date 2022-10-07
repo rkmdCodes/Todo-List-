@@ -9,7 +9,7 @@ const app = express();
 
 //creating the database
 
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect("mongodb+srv://the_bhagwan:rkmdtech8@cluster0.c7pdapj.mongodb.net/todolistDB");
 
 //defining the schemna of the database
 
@@ -161,7 +161,11 @@ app.get("/work", function (req, res) {
 app.get("/about", function (req, res) {
   res.render("about");
 });
-
-app.listen(3000, function () {
+let port = process.env.PORT;
+if(port == null || port =="")
+   {
+    port = 3000;
+   }
+app.listen(port, function () {
   console.log("Server started on port 3000");
 });
